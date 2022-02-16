@@ -1,0 +1,7 @@
+node_modules
+docs
+log
+coverage
+build
+.vscode
+src/**/*.json
