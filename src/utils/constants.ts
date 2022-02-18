@@ -14,3 +14,8 @@ export const DATABASE = {
   PASSWORD: process.env.DATABASE_PASSWORD || '',
   PORT: process.env.DATABASE_PORT || 3306,
 };
+
+export const ENCRYPTION = {
+  KEY: process.env.ENCRYPTION_KEY || '',
+  IV: process.env.ENCRYPTION_IV || '',
+};

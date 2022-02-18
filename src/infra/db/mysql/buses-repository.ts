@@ -2,6 +2,7 @@ import {
   CreateBusesRepository,
   ListAllBusesRepository,
   ListBusesByCodeRepository,
+  ListBusesByIdRepository,
 } from '@/data/protocols/db';
 import {
   formateCamelCaseKeysForSnakeCase,
@@ -13,8 +14,19 @@ export class BusesRepository
   implements
     ListBusesByCodeRepository,
     ListAllBusesRepository,
+    ListBusesByIdRepository,
     CreateBusesRepository
 {
+  async findById(id: string | number): ListBusesByIdRepository.Result {
+    const bus = await knexConnection('tb_buses')
+      .select('*')
+      .where('buses_id', id)
+      .orWhere('external_id', id)
+      .first();
+
+    return formateSnakeCaseKeysForCamelCase(bus);
+  }
+
   async findByCode(code: string): ListBusesByCodeRepository.Result {
     const bus = await knexConnection('tb_buses')
       .select('*')
