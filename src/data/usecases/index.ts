@@ -5,3 +5,5 @@ export * from './employees/db-create-employees';
 
 export * from './buses/db-create-buses';
 export * from './buses/db-list-all-buses';
+
+export * from './auth/db-authentication-by-credentials';

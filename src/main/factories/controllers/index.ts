@@ -6,3 +6,5 @@ export * from './employees/make-create-employees';
 
 export * from './buses/make-create-buses';
 export * from './buses/make-list-all-buses';
+
+export * from './auth/make-authentication-by-credential';

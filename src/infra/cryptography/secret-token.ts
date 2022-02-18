@@ -11,7 +11,9 @@ export class SecretToken implements Encrypt, Decrypt {
       ENCRYPTION.IV,
     );
 
-    const updatedCipher = cipher.update(JSON.stringify(params));
+    const updatedCipher = cipher.update(
+      JSON.stringify({ ...params, createdAt: new Date() }),
+    );
 
     const finalCypher = Buffer.concat([updatedCipher, cipher.final()]);
 
