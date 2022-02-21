@@ -1,5 +1,8 @@
 import { Encrypt, HashComparer } from '@/data/protocols/cryptography';
-import { ListEmployeesByEmailRepository } from '@/data/protocols/db';
+import {
+  ListEmployeeRelationshipByIdRepository,
+  ListEmployeesByEmailRepository,
+} from '@/data/protocols/db';
 import { AuthenticationByCredentials } from '@/domain/usecases';
 
 export class DbAuthenticationByCredentials
@@ -7,6 +10,7 @@ export class DbAuthenticationByCredentials
 {
   constructor(
     private readonly listEmployeesByEmailRepository: ListEmployeesByEmailRepository,
+    private readonly listEmployeeRelationshipByIdRepository: ListEmployeeRelationshipByIdRepository,
     private readonly hashComparer: HashComparer,
     private readonly secretEncrypt: Encrypt,
   ) {}
@@ -31,10 +35,30 @@ export class DbAuthenticationByCredentials
       throw new Error('EMPLOYEE_NOT_FOUND');
     }
 
-    const accessToken = this.secretEncrypt.encrypt(employee);
+    const additionalData =
+      await this.listEmployeeRelationshipByIdRepository.findRelationById(
+        employee.employeesId,
+      );
+
+    const token = {
+      employeeId: employee.employeesId,
+      name: employee.name,
+      email: employee.email,
+      tokenDate: new Date(),
+      ...additionalData,
+    };
+
+    const accessToken = this.secretEncrypt.encrypt(token);
 
     return {
+      employee: {
+        id: employee.externalId,
+        name: employee.name,
+        email: employee.email,
+        type: additionalData.type.description,
+        bus: additionalData.bus.name,
+      },
       accessToken,
-    } as any;
+    };
   }
 }

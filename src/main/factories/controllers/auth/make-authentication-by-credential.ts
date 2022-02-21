@@ -13,6 +13,7 @@ export const makeAuthenticationByCredential = () => {
 
   const dbAuthenticationByCredentials = new DbAuthenticationByCredentials(
     employeesRepository,
+    employeesRepository,
     bcryptAdapter,
     secretToken,
   );

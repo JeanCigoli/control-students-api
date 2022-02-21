@@ -6,6 +6,7 @@ export * from './employees-type/list-employees-types-by-id-repository';
 export * from './employees/list-employees-by-id-repository';
 export * from './employees/list-employees-by-email-repository';
 export * from './employees/create-employees-repository';
+export * from './employees/list-employee-relationship-by-id-repository';
 
 export * from './buses/create-buses-repository';
 export * from './buses/list-all-buses-repository';
