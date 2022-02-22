@@ -10,4 +10,6 @@ export * from './buses/make-list-all-buses';
 export * from './classes/make-create-classes';
 export * from './classes/make-list-all-classes';
 
+export * from './students/make-create-students';
+
 export * from './auth/make-authentication-by-credential';

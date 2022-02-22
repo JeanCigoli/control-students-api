@@ -28,6 +28,7 @@ export class EmployeesRepository
       )
       .innerJoin('tb_buses as bus', 'bus.buses_id', 'employee.buses_id')
       .select('type.*', 'bus.*')
+      .whereNull('deleted_at')
       .where('employee.employees_id', id)
       .orWhere('employee.external_id', id)
       .options({ nestTables: true })
@@ -40,6 +41,7 @@ export class EmployeesRepository
     const employees = await knexConnection('tb_employees')
       .select('*')
       .where('email', email)
+      .whereNull('deleted_at')
       .first();
 
     return formateSnakeCaseKeysForCamelCase(employees);
@@ -50,6 +52,7 @@ export class EmployeesRepository
       .select('*')
       .where('employees_id', id)
       .orWhere('external_id', id)
+      .whereNull('deleted_at')
       .first();
 
     return formateSnakeCaseKeysForCamelCase(employees);

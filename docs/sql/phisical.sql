@@ -111,7 +111,7 @@ ENGINE = InnoDB;
 -- Table `control_student`.`tb_students`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `control_student`.`tb_students` (
-  `students_id` INT NOT NULL,
+  `students_id` INT NOT NULL AUTO_INCREMENT,
   `classes_id` INT NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   `ra` VARCHAR(50) NOT NULL,
