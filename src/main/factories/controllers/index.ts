@@ -7,4 +7,7 @@ export * from './employees/make-create-employees';
 export * from './buses/make-create-buses';
 export * from './buses/make-list-all-buses';
 
+export * from './classes/make-create-classes';
+export * from './classes/make-list-all-classes';
+
 export * from './auth/make-authentication-by-credential';

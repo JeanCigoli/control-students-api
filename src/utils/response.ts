@@ -57,6 +57,22 @@ export const notFound = (message: string, error?: any) => {
   };
 };
 
+export const forbidden = (error: Error) => {
+  errorLogger(error);
+  return {
+    statusCode: 403,
+    body: {
+      message: 'Ops, parece que não está autenticado',
+      error: [
+        {
+          message: 'Ops, parece que não está autenticado',
+          param: 'authorization',
+        },
+      ],
+    },
+  };
+};
+
 export const badRequest = (error?: any) => {
   return {
     statusCode: 400,
@@ -64,6 +80,17 @@ export const badRequest = (error?: any) => {
       message: 'Ops, ocorreram alguns erros de validações',
       payload: {},
       error,
+    },
+  };
+};
+
+export const unauthorized = () => {
+  return {
+    statusCode: 401,
+    body: {
+      message: 'Ops, parece que você não tem acesso a este conteúdo.',
+      payload: {},
+      error: [],
     },
   };
 };

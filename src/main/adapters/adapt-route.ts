@@ -10,6 +10,7 @@ export function adaptRoute(controller: Controller) {
     req.body = formateSnakeCaseKeysForCamelCase(req.body);
     req.params = formateSnakeCaseKeysForCamelCase(req.params);
     req.query = formateSnakeCaseKeysForCamelCase(req.query);
+    req.token = formateSnakeCaseKeysForCamelCase(req.token);
 
     const httpResponse = await controller.handle(req);
 

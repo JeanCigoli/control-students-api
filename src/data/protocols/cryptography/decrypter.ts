@@ -3,5 +3,5 @@ export interface Decrypt {
 }
 
 export namespace Decrypt {
-  export type Result = { [value: string]: any };
+  export type Result = any;
 }
