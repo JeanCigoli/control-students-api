@@ -44,7 +44,7 @@ export class DbCreateClasses implements CreateClasses {
     return {
       externalId: classes.externalId,
       name: classes.name,
-      busesId: busExist.busesId,
+      busesId: busExist.externalId,
       periodId,
     };
   }
