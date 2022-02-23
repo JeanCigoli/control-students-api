@@ -10,6 +10,7 @@ export * from './classes/db-create-classes';
 export * from './classes/db-list-all-classes';
 
 export * from './students/db-create-students';
+export * from './students/db-list-all-students';
 
 export * from './auth/db-authentication-by-credentials';
 export * from './auth/db-authentication-by-token';

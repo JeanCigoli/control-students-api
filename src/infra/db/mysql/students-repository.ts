@@ -18,9 +18,20 @@ export class StudentsRepository
     UpdateStudentsRepository
 {
   async findAll(): ListAllStudentsRepository.Result {
-    const students = await knexConnection('tb_students')
-      .select('*')
-      .whereNull('deleted_at');
+    const students = await knexConnection('tb_students as students')
+      .innerJoin(
+        'tb_classes as classes',
+        'students.classes_id',
+        'classes.classes_id',
+      )
+      .innerJoin(
+        'tb_periods as periods',
+        'periods.periods_id',
+        'classes.period_id',
+      )
+      .select('students.*', 'classes.*', 'periods.*')
+      .options({ nestTables: true })
+      .whereNull('students.deleted_at');
 
     return formateSnakeCaseKeysForCamelCase(students);
   }

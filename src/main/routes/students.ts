@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { adaptRoute, adaptMiddleware } from '../adapters';
-import { makeCreateStudents } from '../factories/controllers';
+import {
+  makeCreateStudents,
+  makeListAllStudents,
+} from '../factories/controllers';
 import { makeAuthMiddleware } from '../factories/middlewares';
 
 export default (router: Router) => {
@@ -8,5 +11,11 @@ export default (router: Router) => {
     '/students',
     adaptMiddleware(makeAuthMiddleware()),
     adaptRoute(makeCreateStudents()),
+  );
+
+  router.get(
+    '/students',
+    adaptMiddleware(makeAuthMiddleware()),
+    adaptRoute(makeListAllStudents()),
   );
 };

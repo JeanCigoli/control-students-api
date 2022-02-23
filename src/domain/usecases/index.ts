@@ -10,6 +10,7 @@ export * from './classes/create-classes';
 export * from './classes/list-all-classes';
 
 export * from './students/create-students';
+export * from './students/list-all-students';
 
 export * from './auth/authentication-by-credentials';
 export * from './auth/authentication-token';
