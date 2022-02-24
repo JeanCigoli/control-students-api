@@ -5,9 +5,13 @@ import { serverError, ok } from '@/utils/response';
 export class ListAllStudentsController implements Controller {
   constructor(private readonly listAllStudents: ListAllStudents) {}
 
-  async handle(_: Controller.Request): Controller.Response {
+  async handle(httpRequest: Controller.Request): Controller.Response {
     try {
-      const students = await this.listAllStudents.findAll();
+      const { busesId } = httpRequest.token.bus;
+
+      const students = await this.listAllStudents.findAll({
+        busesId,
+      });
 
       return ok('Listagem de alunos ativos', students);
     } catch (error: any) {

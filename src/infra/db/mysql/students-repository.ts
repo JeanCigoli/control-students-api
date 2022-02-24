@@ -17,7 +17,9 @@ export class StudentsRepository
     CreateStudentsRepository,
     UpdateStudentsRepository
 {
-  async findAll(): ListAllStudentsRepository.Result {
+  async findAll(
+    params: ListAllStudentsRepository.Params,
+  ): ListAllStudentsRepository.Result {
     const students = await knexConnection('tb_students as students')
       .innerJoin(
         'tb_classes as classes',
@@ -31,6 +33,7 @@ export class StudentsRepository
       )
       .select('students.*', 'classes.*', 'periods.*')
       .options({ nestTables: true })
+      .where('classes.buses_id', '=', params.busesId)
       .whereNull('students.deleted_at');
 
     return formateSnakeCaseKeysForCamelCase(students);

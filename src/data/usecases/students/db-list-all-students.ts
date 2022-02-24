@@ -6,8 +6,10 @@ export class DbListAllStudents implements ListAllStudents {
     private readonly listAllStudentsRepository: ListAllStudentsRepository,
   ) {}
 
-  async findAll(): ListAllStudents.Result {
-    const students = await this.listAllStudentsRepository.findAll();
+  async findAll(params: ListAllStudents.Params): ListAllStudents.Result {
+    const students = await this.listAllStudentsRepository.findAll({
+      busesId: params.busesId,
+    });
 
     return students.map((value) => ({
       externalId: value.students.externalId,
