@@ -18,3 +18,4 @@ export * from './students/list-all-students-controller';
 export * from './auth/authentication-by-credentials-controller';
 
 export * from './graphics/list-all-students-and-vacancies-controller';
+export * from './graphics/list-all-classes-details-controller';

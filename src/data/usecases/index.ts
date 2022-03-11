@@ -18,3 +18,4 @@ export * from './auth/db-authentication-by-credentials';
 export * from './auth/db-authentication-by-token';
 
 export * from './graphics/db-list-all-students-and-vacancies';
+export * from './graphics/db-list-all-classes-details';
