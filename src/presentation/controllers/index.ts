@@ -10,6 +10,8 @@ export * from './buses/list-all-buses-controller';
 export * from './classes/create-classes-controller';
 export * from './classes/list-all-classes-controller';
 
+export * from './classes-type/list-all-classes-type-controller';
+
 export * from './students/create-students-controller';
 export * from './students/list-all-students-controller';
 

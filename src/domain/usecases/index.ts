@@ -9,6 +9,8 @@ export * from './buses/list-all-buses';
 export * from './classes/create-classes';
 export * from './classes/list-all-classes';
 
+export * from './classes-type/list-all-classes-type';
+
 export * from './students/create-students';
 export * from './students/list-all-students';
 

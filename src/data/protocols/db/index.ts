@@ -18,6 +18,8 @@ export * from './classes/create-classes-repository';
 export * from './classes/list-all-classes-by-bus-repository';
 export * from './classes/list-classes-by-id-repository';
 
+export * from './classes-type/list-all-classes-type-repository';
+
 export * from './students/create-students-repository';
 export * from './students/update-students-repository';
 export * from './students/list-all-students-repository';

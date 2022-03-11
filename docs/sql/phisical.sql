@@ -130,6 +130,28 @@ CREATE TABLE IF NOT EXISTS `control_student`.`tb_students` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `control_student`.`tb_classes_type`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `control_student`.`tb_classes_type` (
+  `classes_type_id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` VARCHAR(100) NOT NULL,
+  `external_id` VARCHAR(36) NOT NULL DEFAULT (UUID()),
+  `created_at` DATETIME NOT NULL DEFAULT NOW(),
+  `deleted_at` DATETIME NULL,
+  PRIMARY KEY (`classes_type_id`),
+  INDEX `fk_tb_students_tb_classes1_typex` (`classes_type_id` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+ALTER TABLE control_student.tb_classes ADD COLUMN classes_type_id INT NULL AFTER buses_id;
+
+ALTER TABLE control_student.tb_classes ADD CONSTRAINT fk_tb_classes_classes_type_id FOREIGN KEY (classes_type_id)
+REFERENCES control_student.tb_classes_type (classes_type_id);
+
+ALTER TABLE control_student.tb_classes CHANGE classes_type_id classes_type_id INT NOT NULL;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

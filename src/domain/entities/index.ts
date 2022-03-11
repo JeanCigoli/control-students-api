@@ -4,3 +4,4 @@ export * from './buses';
 export * from './employees';
 export * from './classes';
 export * from './students';
+export * from './classes-type';
