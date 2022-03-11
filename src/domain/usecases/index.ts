@@ -16,3 +16,5 @@ export * from './students/list-all-students';
 
 export * from './auth/authentication-by-credentials';
 export * from './auth/authentication-token';
+
+export * from './graphics/list-all-students-and-vacancies';

@@ -1,4 +1,5 @@
 import {
+  CountStudentsByClassesRepository,
   CreateStudentsRepository,
   ListAllStudentsRepository,
   ListStudentsByIdRepository,
@@ -15,8 +16,20 @@ export class StudentsRepository
     ListAllStudentsRepository,
     ListStudentsByIdRepository,
     CreateStudentsRepository,
-    UpdateStudentsRepository
+    UpdateStudentsRepository,
+    CountStudentsByClassesRepository
 {
+  async count(
+    params: CountStudentsByClassesRepository.Params,
+  ): CountStudentsByClassesRepository.Result {
+    const count = await knexConnection('tb_students')
+      .count('*', { as: 'count' })
+      .whereIn('classes_id', params.classesId)
+      .first();
+
+    return count;
+  }
+
   async findAll(
     params: ListAllStudentsRepository.Params,
   ): ListAllStudentsRepository.Result {

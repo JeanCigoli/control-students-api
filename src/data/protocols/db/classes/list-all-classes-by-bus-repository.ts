@@ -6,6 +6,10 @@ export interface ListAllClassesByBusRepository {
 
 export namespace ListAllClassesByBusRepository {
   export type Result = Promise<
-    Pick<Classes, 'externalId' | 'name'> & { period: string }[]
+    Array<
+      Omit<Classes, 'busesId' | 'periodId'> & {
+        period: string;
+      }
+    >
   >;
 }

@@ -11,6 +11,10 @@ export class DbListAllClasses implements ListAllClasses {
       params.busesId,
     );
 
-    return classes;
+    return classes.map((value) => ({
+      externalId: value.externalId,
+      name: value.name,
+      period: value.period,
+    }));
   }
 }

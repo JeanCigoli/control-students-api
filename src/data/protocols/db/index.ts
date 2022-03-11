@@ -24,3 +24,4 @@ export * from './students/create-students-repository';
 export * from './students/update-students-repository';
 export * from './students/list-all-students-repository';
 export * from './students/list-students-by-id-repository';
+export * from './students/count-students-by-classes-repository';

@@ -22,7 +22,13 @@ export class ClassesRepository
         'classes.period_id',
         'period.periods_id',
       )
-      .select('classes.external_id', 'classes.name', 'period.name as period')
+      .select(
+        'classes.classes_id',
+        'classes.external_id',
+        'classes.name',
+        'classes.classes_type_id',
+        'period.name as period',
+      )
       .where('classes.buses_id', busesId);
 
     return formateSnakeCaseKeysForCamelCase(classes);
