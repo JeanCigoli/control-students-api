@@ -10,6 +10,11 @@ export namespace ListAllClasses {
   };
 
   export type Result = Promise<
-    Array<Pick<Classes, 'name' | 'externalId'> & { period: string }>
+    Array<
+      Pick<Classes, 'name' | 'externalId'> & {
+        period: string;
+        type: { name: string; description: string };
+      }
+    >
   >;
 }

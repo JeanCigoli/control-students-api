@@ -9,6 +9,8 @@ export namespace ListAllClassesByBusRepository {
     Array<
       Omit<Classes, 'busesId' | 'periodId'> & {
         period: string;
+        type: string;
+        description: string;
       }
     >
   >;

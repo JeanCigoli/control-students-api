@@ -22,12 +22,19 @@ export class ClassesRepository
         'classes.period_id',
         'period.periods_id',
       )
+      .innerJoin(
+        'tb_classes_type as type',
+        'type.classes_type_id',
+        'classes.classes_type_id',
+      )
       .select(
         'classes.classes_id',
         'classes.external_id',
         'classes.name',
         'classes.classes_type_id',
         'period.name as period',
+        'type.name as type',
+        'type.description',
       )
       .where('classes.buses_id', busesId);
 

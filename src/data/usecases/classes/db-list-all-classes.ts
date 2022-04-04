@@ -15,6 +15,10 @@ export class DbListAllClasses implements ListAllClasses {
       externalId: value.externalId,
       name: value.name,
       period: value.period,
+      type: {
+        name: value.type,
+        description: value.description,
+      },
     }));
   }
 }

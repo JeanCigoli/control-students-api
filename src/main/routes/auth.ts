@@ -3,5 +3,5 @@ import { adaptRoute } from '../adapters';
 import { makeAuthenticationByCredential } from '../factories/controllers';
 
 export default (router: Router) => {
-  router.post('/authentication', adaptRoute(makeAuthenticationByCredential()));
+  router.post('/tokens', adaptRoute(makeAuthenticationByCredential()));
 };
