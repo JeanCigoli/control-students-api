@@ -11,6 +11,7 @@ export class ListAllStudentsController implements Controller {
 
       const students = await this.listAllStudents.findAll({
         busesId,
+        classesId: httpRequest.query.classesId,
       });
 
       return ok('Listagem de alunos ativos', students);

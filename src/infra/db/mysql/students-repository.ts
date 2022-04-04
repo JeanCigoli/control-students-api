@@ -47,7 +47,13 @@ export class StudentsRepository
       .select('students.*', 'classes.*', 'periods.*')
       .options({ nestTables: true })
       .where('classes.buses_id', '=', params.busesId)
+      .where((build) =>
+        params.classesId
+          ? build.where('classes.external_id', '=', params.classesId)
+          : build,
+      )
       .whereNull('students.deleted_at')
+      .whereNull('classes.deleted_at')
       .orderBy('students.name', 'asc');
 
     return formateSnakeCaseKeysForCamelCase(students);

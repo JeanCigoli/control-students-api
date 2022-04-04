@@ -36,7 +36,8 @@ export class ClassesRepository
         'type.name as type',
         'type.description',
       )
-      .where('classes.buses_id', busesId);
+      .where('classes.buses_id', busesId)
+      .whereNull('classes.deleted_at');
 
     return formateSnakeCaseKeysForCamelCase(classes);
   }
@@ -46,6 +47,7 @@ export class ClassesRepository
       .select('*')
       .where('classes_id', id)
       .orWhere('external_id', id)
+      .whereNull('deleted_at')
       .first();
 
     return formateSnakeCaseKeysForCamelCase(classes);

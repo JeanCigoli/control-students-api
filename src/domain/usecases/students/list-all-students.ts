@@ -7,6 +7,7 @@ export interface ListAllStudents {
 export namespace ListAllStudents {
   export type Params = {
     busesId: number;
+    classesId?: string;
   };
 
   export type Result = Promise<

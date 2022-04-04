@@ -9,6 +9,7 @@ export class DbListAllStudents implements ListAllStudents {
   async findAll(params: ListAllStudents.Params): ListAllStudents.Result {
     const students = await this.listAllStudentsRepository.findAll({
       busesId: params.busesId,
+      classesId: params.classesId,
     });
 
     return students.map((value) => ({
