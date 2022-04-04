@@ -47,7 +47,8 @@ export class StudentsRepository
       .select('students.*', 'classes.*', 'periods.*')
       .options({ nestTables: true })
       .where('classes.buses_id', '=', params.busesId)
-      .whereNull('students.deleted_at');
+      .whereNull('students.deleted_at')
+      .orderBy('students.name', 'asc');
 
     return formateSnakeCaseKeysForCamelCase(students);
   }

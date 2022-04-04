@@ -16,6 +16,8 @@ export class DbListAllStudents implements ListAllStudents {
       name: value.students.name,
       ra: value.students.ra,
       class: value.students.class,
+      dayOfWeek: value.students.dayOfWeek,
+      school: value.students.school,
       createdAt: value.students.createdAt,
       updatedAt: value.students.updatedAt,
       classes: {
