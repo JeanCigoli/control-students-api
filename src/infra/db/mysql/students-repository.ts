@@ -84,7 +84,10 @@ export class StudentsRepository
   ): UpdateStudentsRepository.Result {
     return knexConnection('tb_students')
       .update(formateCamelCaseKeysForSnakeCase(params))
-      .where('students_id', id)
-      .orWhere('external_id', id);
+      .where((build) =>
+        typeof id === 'string'
+          ? build.where('external_id', id)
+          : build.where('students_id', id),
+      );
   }
 }

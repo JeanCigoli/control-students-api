@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { adaptRoute, adaptMiddleware } from '../adapters';
 import {
   makeCreateStudents,
+  makeDeleteStudents,
   makeListAllStudents,
 } from '../factories/controllers';
 import { makeAuthMiddleware } from '../factories/middlewares';
@@ -17,5 +18,11 @@ export default (router: Router) => {
     '/students',
     adaptMiddleware(makeAuthMiddleware()),
     adaptRoute(makeListAllStudents()),
+  );
+
+  router.delete(
+    '/students/:student_id',
+    adaptMiddleware(makeAuthMiddleware()),
+    adaptRoute(makeDeleteStudents()),
   );
 };
