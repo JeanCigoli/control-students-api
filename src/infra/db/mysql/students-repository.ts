@@ -25,6 +25,7 @@ export class StudentsRepository
     const count = await knexConnection('tb_students')
       .count('*', { as: 'count' })
       .whereIn('classes_id', params.classesId)
+      .whereNull('deleted_at')
       .first();
 
     return count;
