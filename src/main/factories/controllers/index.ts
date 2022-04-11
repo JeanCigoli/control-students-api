@@ -9,6 +9,7 @@ export * from './buses/make-list-all-buses';
 
 export * from './classes/make-create-classes';
 export * from './classes/make-list-all-classes';
+export * from './classes/make-delete-classes';
 
 export * from './classes-type/make-list-all-classes-type';
 

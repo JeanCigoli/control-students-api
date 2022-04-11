@@ -9,6 +9,7 @@ export * from './buses/list-all-buses-controller';
 
 export * from './classes/create-classes-controller';
 export * from './classes/list-all-classes-controller';
+export * from './classes/delete-classes-controller';
 
 export * from './classes-type/list-all-classes-type-controller';
 

@@ -3,8 +3,10 @@ import {
   CreateStudentsRepository,
   ListAllStudentsRepository,
   ListStudentsByIdRepository,
+  UpdateStudentsByClassesRepository,
   UpdateStudentsRepository,
 } from '@/data/protocols/db';
+import { Students } from '@/domain/entities';
 import {
   formateCamelCaseKeysForSnakeCase,
   formateSnakeCaseKeysForCamelCase,
@@ -17,7 +19,8 @@ export class StudentsRepository
     ListStudentsByIdRepository,
     CreateStudentsRepository,
     UpdateStudentsRepository,
-    CountStudentsByClassesRepository
+    CountStudentsByClassesRepository,
+    UpdateStudentsByClassesRepository
 {
   async count(
     params: CountStudentsByClassesRepository.Params,
@@ -90,5 +93,14 @@ export class StudentsRepository
           ? build.where('external_id', id)
           : build.where('students_id', id),
       );
+  }
+
+  updateByClasse(
+    params: UpdateStudentsByClassesRepository.Params,
+    classesId: number,
+  ): UpdateStudentsByClassesRepository.Result {
+    return knexConnection('tb_students')
+      .update(formateCamelCaseKeysForSnakeCase(params))
+      .where('classes_id', classesId);
   }
 }

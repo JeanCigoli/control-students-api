@@ -2,6 +2,7 @@ import {
   CreateClassesRepository,
   ListAllClassesByBusRepository,
   ListClassesByIdRepository,
+  UpdateClassesRepository,
 } from '@/data/protocols/db';
 import {
   formateCamelCaseKeysForSnakeCase,
@@ -13,7 +14,8 @@ export class ClassesRepository
   implements
     ListClassesByIdRepository,
     ListAllClassesByBusRepository,
-    CreateClassesRepository
+    CreateClassesRepository,
+    UpdateClassesRepository
 {
   async findAllByBus(busesId: number): ListAllClassesByBusRepository.Result {
     const classes = await knexConnection('tb_classes as classes')
@@ -59,5 +61,18 @@ export class ClassesRepository
     return knexConnection('tb_classes').insert(
       formateCamelCaseKeysForSnakeCase(params),
     );
+  }
+
+  update(
+    params: UpdateClassesRepository.Params,
+    id: string | number,
+  ): UpdateClassesRepository.Result {
+    return knexConnection('tb_classes')
+      .update(formateCamelCaseKeysForSnakeCase(params))
+      .where((build) =>
+        typeof id === 'string'
+          ? build.where('external_id', id)
+          : build.where('classes_id', id),
+      );
   }
 }

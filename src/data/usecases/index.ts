@@ -8,6 +8,7 @@ export * from './buses/db-list-all-buses';
 
 export * from './classes/db-create-classes';
 export * from './classes/db-list-all-classes';
+export * from './classes/db-delete-classes';
 
 export * from './classes-type/db-list-all-classes-type';
 

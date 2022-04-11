@@ -7,7 +7,10 @@ export interface CreateClassesRepository {
 }
 
 export namespace CreateClassesRepository {
-  export type Params = Omit<Classes, 'classesId' | 'externalId'>;
+  export type Params = Omit<
+    Classes,
+    'classesId' | 'externalId' | 'createdAt' | 'deletedAt'
+  >;
 
   export type Result = Promise<number[]>;
 }

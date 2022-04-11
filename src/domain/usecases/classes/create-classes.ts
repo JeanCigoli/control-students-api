@@ -5,7 +5,12 @@ export interface CreateClasses {
 }
 
 export namespace CreateClasses {
-  export type Params = Omit<Classes, 'classesId' | 'externalId'>;
+  export type Params = Omit<
+    Classes,
+    'classesId' | 'externalId' | 'createdAt' | 'deletedAt'
+  >;
 
-  export type Result = Promise<Omit<Classes, 'classesId'>>;
+  export type Result = Promise<
+    Omit<Classes, 'classesId' | 'createdAt' | 'deletedAt'>
+  >;
 }
