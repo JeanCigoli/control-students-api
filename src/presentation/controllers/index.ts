@@ -16,6 +16,7 @@ export * from './classes-type/list-all-classes-type-controller';
 export * from './students/create-students-controller';
 export * from './students/list-all-students-controller';
 export * from './students/delete-students-controller';
+export * from './students/update-students-controller';
 
 export * from './auth/authentication-by-credentials-controller';
 

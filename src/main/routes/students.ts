@@ -4,6 +4,7 @@ import {
   makeCreateStudents,
   makeDeleteStudents,
   makeListAllStudents,
+  makeUpdateStudents,
 } from '../factories/controllers';
 import { makeAuthMiddleware } from '../factories/middlewares';
 
@@ -18,6 +19,12 @@ export default (router: Router) => {
     '/students',
     adaptMiddleware(makeAuthMiddleware()),
     adaptRoute(makeListAllStudents()),
+  );
+
+  router.put(
+    '/students/:student_id',
+    adaptMiddleware(makeAuthMiddleware()),
+    adaptRoute(makeUpdateStudents()),
   );
 
   router.delete(

@@ -15,6 +15,7 @@ export * from './classes-type/list-all-classes-type';
 export * from './students/create-students';
 export * from './students/list-all-students';
 export * from './students/delete-students';
+export * from './students/update-students';
 
 export * from './auth/authentication-by-credentials';
 export * from './auth/authentication-token';

@@ -15,6 +15,7 @@ export * from './classes-type/db-list-all-classes-type';
 export * from './students/db-create-students';
 export * from './students/db-list-all-students';
 export * from './students/db-delete-students';
+export * from './students/db-update-students';
 
 export * from './auth/db-authentication-by-credentials';
 export * from './auth/db-authentication-by-token';
