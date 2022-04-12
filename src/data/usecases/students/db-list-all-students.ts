@@ -25,6 +25,7 @@ export class DbListAllStudents implements ListAllStudents {
         externalId: value.classes.externalId,
         name: value.classes.name,
         period: value.periods.name,
+        type: value.type.name,
       },
     }));
   }

@@ -44,11 +44,16 @@ export class StudentsRepository
         'classes.classes_id',
       )
       .innerJoin(
+        'tb_classes_type as type',
+        'type.classes_type_id',
+        'classes.classes_type_id',
+      )
+      .innerJoin(
         'tb_periods as periods',
         'periods.periods_id',
         'classes.period_id',
       )
-      .select('students.*', 'classes.*', 'periods.*')
+      .select('students.*', 'classes.*', 'periods.*', 'type.*')
       .options({ nestTables: true })
       .where('classes.buses_id', '=', params.busesId)
       .where((build) =>

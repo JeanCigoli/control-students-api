@@ -1,4 +1,4 @@
-import { Classes, Periods, Students } from '@/domain/entities';
+import { Classes, ClassesType, Periods, Students } from '@/domain/entities';
 
 export interface ListAllStudentsRepository {
   findAll(
@@ -17,6 +17,7 @@ export namespace ListAllStudentsRepository {
       students: Students;
       classes: Classes;
       periods: Periods;
+      type: ClassesType;
     }[]
   >;
 }
