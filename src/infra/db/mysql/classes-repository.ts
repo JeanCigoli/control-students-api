@@ -47,8 +47,11 @@ export class ClassesRepository
   async findById(id: string | number): ListClassesByIdRepository.Result {
     const classes = await knexConnection('tb_classes')
       .select('*')
-      .where('classes_id', id)
-      .orWhere('external_id', id)
+      .where((build) =>
+        typeof id === 'string'
+          ? build.where('external_id', id)
+          : build.where('classes_id', id),
+      )
       .whereNull('deleted_at')
       .first();
 

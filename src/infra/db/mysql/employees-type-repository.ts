@@ -11,8 +11,11 @@ export class EmployeesTypesRepository
   async findById(id: string | number): ListEmployeesTypesByIdRepository.Result {
     const employeesTypes = await knexConnection('tb_employees_type')
       .select('*')
-      .where('employees_type_id', id)
-      .orWhere('external_id', id)
+      .where((build) =>
+        typeof id === 'string'
+          ? build.where('external_id', id)
+          : build.where('employees_type_id', id),
+      )
       .first();
 
     return formateSnakeCaseKeysForCamelCase(employeesTypes);

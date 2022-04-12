@@ -11,8 +11,11 @@ export class ClassesTypeRepository
   async findById(id: string | number): ListClassesTypeByIdRepository.Result {
     const classesType = await knexConnection('tb_classes_type')
       .select('*')
-      .where('classes_type_id', id)
-      .orWhere('external_id', id)
+      .where((build) =>
+        typeof id === 'string'
+          ? build.where('external_id', id)
+          : build.where('classes_type_id', id),
+      )
       .first();
 
     return formateSnakeCaseKeysForCamelCase(classesType);

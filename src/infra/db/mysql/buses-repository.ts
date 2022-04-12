@@ -20,8 +20,11 @@ export class BusesRepository
   async findById(id: string | number): ListBusesByIdRepository.Result {
     const bus = await knexConnection('tb_buses')
       .select('*')
-      .where('buses_id', id)
-      .orWhere('external_id', id)
+      .where((build) =>
+        typeof id === 'string'
+          ? build.where('external_id', id)
+          : build.where('buses_id', id),
+      )
       .first();
 
     return formateSnakeCaseKeysForCamelCase(bus);

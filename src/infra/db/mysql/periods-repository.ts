@@ -11,8 +11,11 @@ export class PeriodsRepository
   async findById(id: string | number): ListPeriodsByIdRepository.Result {
     const periods = await knexConnection('tb_periods')
       .select('*')
-      .where('periods_id', id)
-      .orWhere('external_id', id)
+      .where((build) =>
+        typeof id === 'string'
+          ? build.where('external_id', id)
+          : build.where('periods_id', id),
+      )
       .first();
 
     return formateSnakeCaseKeysForCamelCase(periods);

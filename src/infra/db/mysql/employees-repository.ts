@@ -50,8 +50,11 @@ export class EmployeesRepository
   async findById(id: string | number): ListEmployeesByIdRepository.Result {
     const employees = await knexConnection('tb_employees')
       .select('*')
-      .where('employees_id', id)
-      .orWhere('external_id', id)
+      .where((build) =>
+        typeof id === 'string'
+          ? build.where('external_id', id)
+          : build.where('employees_id', id),
+      )
       .whereNull('deleted_at')
       .first();
 
